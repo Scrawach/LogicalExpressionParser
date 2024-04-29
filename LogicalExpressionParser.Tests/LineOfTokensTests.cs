@@ -9,7 +9,7 @@ public class LineOfTokensTests
     public void WhenEnumerateLineOfTokens_ThenShouldReturnCorrectTokens_ParsedFromStringLine(string expression, IEnumerable<Token> expectedTokens)
     {
         // assign
-        var linesOfTokens = new LineOfTokens(expression);
+        var linesOfTokens = new LineOfTokens(new ParsedString(expression), new TokenFactory());
         
         // act
         var tokens = linesOfTokens.ToArray();
