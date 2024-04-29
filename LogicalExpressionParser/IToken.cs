@@ -1,5 +1,6 @@
 ﻿namespace LogicalExpressionParser;
 
-public abstract class Token
+public interface IToken
 {
+
 }
