@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser;
+﻿namespace LogicalExpressionParser.Tokens;
 
 public class TokenFactory
 {

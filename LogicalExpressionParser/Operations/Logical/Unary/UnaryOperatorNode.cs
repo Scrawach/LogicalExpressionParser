@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser;
+﻿namespace LogicalExpressionParser.Operations.Logical.Unary;
 
 public abstract class UnaryOperatorNode : INode
 {

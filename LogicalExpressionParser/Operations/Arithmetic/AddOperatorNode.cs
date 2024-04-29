@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser;
+﻿namespace LogicalExpressionParser.Operations.Arithmetic;
 
 public class AddOperatorNode : INode
 {

@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser;
+﻿namespace LogicalExpressionParser.Operations.Logical.Binary;
 
 public class LessOperatorNode : BinaryBooleanOperator
 {

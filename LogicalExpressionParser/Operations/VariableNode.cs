@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionParser;
+﻿using LogicalExpressionParser.Tokens;
+
+namespace LogicalExpressionParser.Operations;
 
 public class VariableNode : INode
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace LogicalExpressionParser;
+namespace LogicalExpressionParser.Tokens;
 
 public class LineOfTokens : IEnumerable<Token>
 {

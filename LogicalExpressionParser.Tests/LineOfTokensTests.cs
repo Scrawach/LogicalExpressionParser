@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using FluentAssertions;
+using LogicalExpressionParser.Tokens;
 
 namespace LogicalExpressionParser.Tests;
 
