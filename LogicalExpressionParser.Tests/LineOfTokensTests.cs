@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using FluentAssertions;
-using LogicalExpressionParser.Tokens;
+using LogicalExpressionParser.Operations;
+using LogicalExpressionParser.Operations.Common;
+using LogicalExpressionParser.Operations.Common.Variable;
 
 namespace LogicalExpressionParser.Tests;
 

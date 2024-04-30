@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser.Operations.Arithmetic;
+﻿namespace LogicalExpressionParser.Operations.Arithmetic.Subtract;
 
 public class SubtractOperatorNode : INode
 {

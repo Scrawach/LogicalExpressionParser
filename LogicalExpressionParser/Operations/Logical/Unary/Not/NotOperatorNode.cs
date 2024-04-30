@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser.Operations.Logical.Unary;
+﻿namespace LogicalExpressionParser.Operations.Logical.Unary.Not;
 
 public class NotOperatorNode : UnaryOperatorNode
 {

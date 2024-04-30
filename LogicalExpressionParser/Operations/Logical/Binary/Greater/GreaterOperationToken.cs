@@ -1,7 +1,4 @@
-﻿using LogicalExpressionParser.Operations;
-using LogicalExpressionParser.Operations.Logical.Binary;
-
-namespace LogicalExpressionParser.Tokens;
+﻿namespace LogicalExpressionParser.Operations.Logical.Binary.Greater;
 
 public class GreaterOperationToken : OperatorToken, IBinaryOperationToken
 {

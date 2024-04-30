@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using FluentAssertions;
-using LogicalExpressionParser.Tokens;
+using LogicalExpressionParser.Operations;
+using LogicalExpressionParser.Operations.Common;
+using LogicalExpressionParser.Operations.Common.Variable;
+using LogicalExpressionParser.Operations.Logical.Binary.Greater;
 
 namespace LogicalExpressionParser.Tests;
 
@@ -33,8 +36,8 @@ public class PostfixTokensTests
         // 1 > 0 + 1, expected: 1 0 1 + >
         yield return new object[]
         {
-            new IToken[] { new VariableToken("1"), new MoreToken(2), new VariableToken("0"), new OperatorToken(1), new VariableToken("1") },
-            new IToken[] {  new VariableToken("1"), new VariableToken("0"), new VariableToken("1"), new OperatorToken(1),  new MoreToken(2)  }
+            new IToken[] { new VariableToken("1"), new GreaterOperationToken(2), new VariableToken("0"), new OperatorToken(1), new VariableToken("1") },
+            new IToken[] {  new VariableToken("1"), new VariableToken("0"), new VariableToken("1"), new OperatorToken(1),  new GreaterOperationToken(2)  }
         };
     }
 }

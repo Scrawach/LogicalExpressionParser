@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using FluentAssertions;
-using LogicalExpressionParser.Tokens;
+using LogicalExpressionParser.Operations;
 
 namespace LogicalExpressionParser.Tests;
 
@@ -76,6 +76,7 @@ public class LogicalExpressionTests
         yield return Expression("x + valueName > y - 1", true);
         yield return Expression("x < y", true);
         yield return Expression("x < y - 5", false);
+        yield return Expression("3 > 2 | 1 < 0", true);
     }
     
     public class MockedVariables : IVariables

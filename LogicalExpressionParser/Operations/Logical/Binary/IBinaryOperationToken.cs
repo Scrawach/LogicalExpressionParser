@@ -1,6 +1,8 @@
-﻿namespace LogicalExpressionParser.Operations.Logical.Binary;
+﻿using LogicalExpressionParser.Operations.Common;
 
-public interface IBinaryOperationToken
+namespace LogicalExpressionParser.Operations.Logical.Binary;
+
+public interface IBinaryOperationToken : IToken
 {
     INode Create(INode left, INode right);
 }

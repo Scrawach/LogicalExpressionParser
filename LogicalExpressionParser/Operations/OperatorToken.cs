@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionParser.Tokens;
+﻿using LogicalExpressionParser.Operations.Common;
+
+namespace LogicalExpressionParser.Operations;
 
 public class OperatorToken : IToken
 {
@@ -6,10 +8,4 @@ public class OperatorToken : IToken
         Precedence = precedence;
 
     public int Precedence { get; }
-}
-
-public class MoreToken : OperatorToken
-{
-    public MoreToken(int precedence) : base(precedence)
-    { }
 }

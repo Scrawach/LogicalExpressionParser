@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser.Operations.Logical.Binary;
+﻿namespace LogicalExpressionParser.Operations.Logical.Binary.Equal;
 
 public class EqualOperatorNode : BinaryBooleanOperator
 {

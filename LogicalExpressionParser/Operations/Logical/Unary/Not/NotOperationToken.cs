@@ -1,7 +1,4 @@
-﻿using LogicalExpressionParser.Operations;
-using LogicalExpressionParser.Operations.Logical.Unary;
-
-namespace LogicalExpressionParser.Tokens;
+﻿namespace LogicalExpressionParser.Operations.Logical.Unary.Not;
 
 public class NotOperationToken : OperatorToken, IUnaryOperationToken
 {

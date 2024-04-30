@@ -1,8 +1,6 @@
-﻿using LogicalExpressionParser.Operations;
-using LogicalExpressionParser.Operations.Arithmetic;
-using LogicalExpressionParser.Operations.Logical.Binary;
+﻿using LogicalExpressionParser.Operations.Logical.Binary;
 
-namespace LogicalExpressionParser.Tokens;
+namespace LogicalExpressionParser.Operations.Arithmetic.Add;
 
 public class AddOperationToken : OperatorToken, IBinaryOperationToken
 {

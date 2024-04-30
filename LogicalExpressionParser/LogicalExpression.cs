@@ -1,8 +1,9 @@
 ﻿using LogicalExpressionParser.Operations;
+using LogicalExpressionParser.Operations.Common;
 using LogicalExpressionParser.Operations.Logical.Binary;
 using LogicalExpressionParser.Operations.Logical.Unary;
 
-namespace LogicalExpressionParser.Tokens;
+namespace LogicalExpressionParser;
 
 public class LogicalExpression
 {

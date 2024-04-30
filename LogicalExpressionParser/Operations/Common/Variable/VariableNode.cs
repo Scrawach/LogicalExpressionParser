@@ -1,4 +1,4 @@
-﻿namespace LogicalExpressionParser.Operations;
+﻿namespace LogicalExpressionParser.Operations.Common.Variable;
 
 public class VariableNode : INode
 {
