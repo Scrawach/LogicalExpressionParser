@@ -77,6 +77,7 @@ public class LogicalExpressionTests
         yield return Expression("x < y", true);
         yield return Expression("x < y - 5", false);
         yield return Expression("3 > 2 | 1 < 0", true);
+        yield return Expression("1 > 1 | 2 + 1", true);
     }
     
     public class MockedVariables : IVariables
