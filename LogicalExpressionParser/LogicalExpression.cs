@@ -18,22 +18,30 @@ public class LogicalExpression
 
         foreach (var token in _tokens)
         {
-            switch (token)
-            {
-                case IUnaryOperationToken unary:
-                    operations.Push(unary.Create(operations.Pop()));
-                    break;
-                case IBinaryOperationToken binary:
-                    var right = operations.Pop();
-                    var left = operations.Pop();
-                    operations.Push(binary.Create(left, right));
-                    break;
-                case IEmptyOperationToken empty:
-                    operations.Push(empty.Create());
-                    break;
-            }
+            var operation = CreateOperationFrom(token, operations);
+            operations.Push(operation);
         }
 
-        return operations.Pop().Evaluate(variables) > 0;
+        if (operations.Count > 1)
+            throw new Exception("Invalid operation count");
+
+        var root = operations.Pop();
+        return root.Evaluate(variables) > 0;
+    }
+
+    private static INode CreateOperationFrom(IToken token, Stack<INode> operations) =>
+        token switch
+        {
+            IUnaryOperationToken unary => unary.Create(operations.Pop()),
+            IBinaryOperationToken binary => CreateBinaryNode(operations, binary),
+            IEmptyOperationToken empty => empty.Create(),
+            _ => throw new ApplicationException($"{nameof(token)} has not valid type!")
+        };
+
+    private static INode CreateBinaryNode(Stack<INode> operations, IBinaryOperationToken binary)
+    {
+        var right = operations.Pop();
+        var left = operations.Pop();
+        return binary.Create(left, right);
     }
 }
