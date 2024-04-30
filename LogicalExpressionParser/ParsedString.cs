@@ -5,6 +5,8 @@ namespace LogicalExpressionParser;
 
 public class ParsedString : IEnumerable<string>
 {
+    private const int IgnoreWhitespacesGroup = 1;
+    
     private readonly Regex _regex = new Regex(@"([\w]+|[><=&-+-!|]+|=>)\s*");
     private readonly string _input;
 
@@ -13,19 +15,12 @@ public class ParsedString : IEnumerable<string>
 
     public IEnumerator<string> GetEnumerator()
     {
-        var position = 0;
-        
-        while (position < _input.Length)
+        foreach (Match match in _regex.Matches(_input))
         {
-            var match = _regex.Match(_input, position);
-
             if (!match.Success)
-                throw new Exception($"Invalid token at position {position}");
+                throw new Exception($"Invalid token at position {match.Index}");
 
-            var token = match.Groups[1].Value;
-            position += match.Length;
-
-            yield return token;
+            yield return match.Groups[IgnoreWhitespacesGroup].Value;
         }
     }
 
