@@ -16,18 +16,7 @@ public class LogicalExpressionTests
     [TestCase("2 + 1 > 2", true)]
     public void WhenEvaluateLogicalExpression_ThenShouldReturnExpectedEvaluatedValue(string expression, bool expected)
     {
-        var logicalExpression = new LogicalExpression
-        (
-            new PostfixTokens
-            (
-                new LineOfTokens
-                (
-                    new ParsedString(expression), 
-                    new TokenFactory()
-                )
-            )
-        );
-
+        var logicalExpression = CreateExpression(expression);
         var result = logicalExpression.Evaluate(null);
         result.Should().Be(expected);
     }
@@ -35,21 +24,23 @@ public class LogicalExpressionTests
     [TestCaseSource(nameof(EvaluateWithVariables))]
     public void WhenEvaluateLogicalExpression_WithVariables_ThenShouldReturnExpectedEvaluatedValue(IVariables variables, string expression, bool expected)
     {
-        var logicalExpression = new LogicalExpression
+        var logicalExpression = CreateExpression(expression);
+        var result = logicalExpression.Evaluate(variables);
+        result.Should().Be(expected);
+    }
+
+    private LogicalExpression CreateExpression(string input) =>
+        new
         (
             new PostfixTokens
             (
                 new LineOfTokens
                 (
-                    new ParsedString(expression), 
+                    new ParsedString(input), 
                     new TokenFactory()
                 )
             )
         );
-
-        var result = logicalExpression.Evaluate(variables);
-        result.Should().Be(expected);
-    }
 
     private static IEnumerable EvaluateWithVariables()
     {
