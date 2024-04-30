@@ -5,7 +5,7 @@ namespace LogicalExpressionParser;
 
 public class ParsedString : IEnumerable<string>
 {
-    private readonly Regex _regex = new Regex(@"([\w]+|[><=&+!|]+|=>)\s*");
+    private readonly Regex _regex = new Regex(@"([\w]+|[><=&-+-!|]+|=>)\s*");
     private readonly string _input;
 
     public ParsedString(string input) => 

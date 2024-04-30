@@ -18,7 +18,7 @@ public class PostfixTokens : IEnumerable<IToken>
             switch (token)
             {
                 case OperatorToken op:
-                    if (stackOfOperators.Count > 0 && stackOfOperators.Peek().Precedence <= op.Precedence)
+                    if (stackOfOperators.Count > 0 && stackOfOperators.Peek().Precedence >= op.Precedence)
                         yield return stackOfOperators.Pop();
                     stackOfOperators.Push(op);
                     break;

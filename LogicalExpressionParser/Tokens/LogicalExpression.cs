@@ -11,7 +11,7 @@ public class LogicalExpression
     public LogicalExpression(PostfixTokens tokens) => 
         _tokens = tokens;
 
-    public bool Evaluate()
+    public bool Evaluate(IVariables variables)
     {
         var operations = new Stack<INode>();
 
@@ -33,6 +33,6 @@ public class LogicalExpression
             }
         }
 
-        return operations.Pop().Evaluate(null) > 0;
+        return operations.Pop().Evaluate(variables) > 0;
     }
 }
