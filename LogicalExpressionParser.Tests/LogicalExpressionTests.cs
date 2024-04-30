@@ -14,18 +14,29 @@ public class LogicalExpressionTests
     [TestCase("2 > 1 > 1", false)]
     [TestCase("2 > 1 = 1", true)]
     [TestCase("2 + 1 > 2", true)]
+    [TestCase("2 + 2 + 2 + 2 + 2 + 1 > 10", true)]
     public void WhenEvaluateLogicalExpression_ThenShouldReturnExpectedEvaluatedValue(string expression, bool expected)
     {
+        // assign
         var logicalExpression = CreateExpression(expression);
+        
+        // act
         var result = logicalExpression.Evaluate(null);
+        
+        // assert
         result.Should().Be(expected);
     }
 
     [TestCaseSource(nameof(EvaluateWithVariables))]
     public void WhenEvaluateLogicalExpression_WithVariables_ThenShouldReturnExpectedEvaluatedValue(IVariables variables, string expression, bool expected)
     {
+        // assign
         var logicalExpression = CreateExpression(expression);
+        
+        // act
         var result = logicalExpression.Evaluate(variables);
+        
+        // assert
         result.Should().Be(expected);
     }
 
