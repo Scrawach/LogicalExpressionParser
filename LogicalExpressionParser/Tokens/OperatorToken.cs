@@ -1,6 +1,6 @@
 ﻿namespace LogicalExpressionParser.Tokens;
 
-public class OperatorToken : Token
+public class OperatorToken : IToken
 {
     public OperatorToken(int precedence) => 
         Precedence = precedence;

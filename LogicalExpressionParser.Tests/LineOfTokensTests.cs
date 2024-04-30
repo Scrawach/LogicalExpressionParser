@@ -7,7 +7,7 @@ namespace LogicalExpressionParser.Tests;
 public class LineOfTokensTests
 {
     [TestCaseSource(nameof(LineOfTokensTestCases))]
-    public void WhenEnumerateLineOfTokens_ThenShouldReturnCorrectTokens_ParsedFromStringLine(string expression, IEnumerable<Token> expectedTokens)
+    public void WhenEnumerateLineOfTokens_ThenShouldReturnCorrectTokens_ParsedFromStringLine(string expression, IEnumerable<IToken> expectedTokens)
     {
         // assign
         var linesOfTokens = new LineOfTokens(new ParsedString(expression), new TokenFactory());
@@ -28,6 +28,6 @@ public class LineOfTokensTests
         yield return SingleTestCase("1<2", new VariableToken("1"), new OperatorToken(1), new VariableToken("2"));
     }
 
-    private static object[] SingleTestCase(string expression, params Token[] expectedTokens) => 
+    private static object[] SingleTestCase(string expression, params IToken[] expectedTokens) => 
         new object[] { expression, expectedTokens };
 }

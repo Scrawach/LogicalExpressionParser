@@ -2,7 +2,7 @@
 
 namespace LogicalExpressionParser.Tokens;
 
-public class LineOfTokens : IEnumerable<Token>
+public class LineOfTokens : IEnumerable<IToken>
 {
     private readonly ParsedString _parsedString;
     private readonly TokenFactory _tokenFactory;
@@ -13,7 +13,7 @@ public class LineOfTokens : IEnumerable<Token>
         _tokenFactory = tokenFactory;
     }
 
-    public IEnumerator<Token> GetEnumerator() => 
+    public IEnumerator<IToken> GetEnumerator() => 
         _parsedString
             .Select(parsedString => _tokenFactory.Parse(parsedString))
             .GetEnumerator();

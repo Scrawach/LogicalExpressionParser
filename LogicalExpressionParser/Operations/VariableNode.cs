@@ -1,14 +1,12 @@
-﻿using LogicalExpressionParser.Tokens;
-
-namespace LogicalExpressionParser.Operations;
+﻿namespace LogicalExpressionParser.Operations;
 
 public class VariableNode : INode
 {
-    private readonly VariableToken _token;
+    private readonly string _variableName;
 
-    public VariableNode(VariableToken token) => 
-        _token = token;
+    public VariableNode(string variableName) => 
+        _variableName = variableName;
 
     public int Evaluate(IVariables variables) => 
-        variables[_token.Name];
+        variables[_variableName];
 }

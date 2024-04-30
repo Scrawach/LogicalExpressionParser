@@ -2,16 +2,17 @@
 
 public class TokenFactory
 {
-    public Token Parse(string content)
-    {
-        return content.ToLower() switch
+    public IToken Parse(string content) =>
+        content.ToLower() switch
         {
-            "|" => new OperatorToken(1),
-            "&" => new OperatorToken(1),
-            ">" => new MoreToken(2),
-            "<" => new OperatorToken(2),
-            "=" => new OperatorToken(3),
-            _ => new VariableToken(content)
+            ">" => new GreaterOperationToken(2),
+            "<" => new LessOperationToken(2),
+            "=" => new EqualOperationToken(3),
+            _ => ParseVariableOrConstant(content)
         };
-    }
+
+    private static IToken ParseVariableOrConstant(string content) => 
+        int.TryParse(content, out var value) 
+            ? new ConstantToken(value) 
+            : new VariableToken(content);
 }

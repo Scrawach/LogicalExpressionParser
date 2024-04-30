@@ -2,14 +2,14 @@
 
 namespace LogicalExpressionParser.Tokens;
 
-public class PostfixTokens : IEnumerable<Token>
+public class PostfixTokens : IEnumerable<IToken>
 {
-    private readonly IEnumerable<Token> _tokens;
+    private readonly IEnumerable<IToken> _tokens;
     
-    public PostfixTokens(IEnumerable<Token> infixTokens) => 
+    public PostfixTokens(IEnumerable<IToken> infixTokens) => 
         _tokens = infixTokens;
     
-    public IEnumerator<Token> GetEnumerator()
+    public IEnumerator<IToken> GetEnumerator()
     {
         var stackOfOperators = new Stack<OperatorToken>();
         
@@ -17,14 +17,14 @@ public class PostfixTokens : IEnumerable<Token>
         {
             switch (token)
             {
-                case VariableToken:
-                    yield return token;
-                    break;
-                
                 case OperatorToken op:
                     if (stackOfOperators.Count > 0 && stackOfOperators.Peek().Precedence <= op.Precedence)
                         yield return stackOfOperators.Pop();
                     stackOfOperators.Push(op);
+                    break;
+                
+                default:
+                    yield return token;
                     break;
             }
         }
