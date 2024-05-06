@@ -12,21 +12,23 @@ public class LogicalExpression
     public LogicalExpression(PostfixTokens tokens) => 
         _tokens = tokens;
 
-    public bool Evaluate(IVariables variables)
+    public bool Evaluate(IVariables variables) => 
+        CreateRootNodeFrom(_tokens).Evaluate(variables) > 0;
+
+    private static INode CreateRootNodeFrom(IEnumerable<IToken> tokens)
     {
         var operations = new Stack<INode>();
 
-        foreach (var token in _tokens)
+        foreach (var token in tokens)
         {
             var operation = CreateOperationFrom(token, operations);
             operations.Push(operation);
         }
 
-        if (operations.Count > 1)
-            throw new Exception("Invalid operation count");
+        if (operations.Count != 1)
+            throw new Exception("Invalid operation count. It must be equal 1");
 
-        var root = operations.Pop();
-        return root.Evaluate(variables) > 0;
+        return operations.Pop();
     }
 
     private static INode CreateOperationFrom(IToken token, Stack<INode> operations) =>
