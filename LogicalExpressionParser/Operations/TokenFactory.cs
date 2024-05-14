@@ -1,6 +1,7 @@
 ﻿using LogicalExpressionParser.Operations.Arithmetic.Add;
 using LogicalExpressionParser.Operations.Arithmetic.Subtract;
 using LogicalExpressionParser.Operations.Common;
+using LogicalExpressionParser.Operations.Common.Brackets;
 using LogicalExpressionParser.Operations.Common.Constant;
 using LogicalExpressionParser.Operations.Common.Variable;
 using LogicalExpressionParser.Operations.Logical.Binary.And;
@@ -16,6 +17,8 @@ public class TokenFactory
     public IToken Parse(string content) =>
         content.ToLower() switch
         {
+            "(" => new OpenBracketToken(),
+            ")" => new CloseBracketToken(),
             "-" => new SubtractOperationToken(3),
             "+" => new AddOperationToken(3),
             ">" => new GreaterOperationToken(2),

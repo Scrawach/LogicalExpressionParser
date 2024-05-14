@@ -40,6 +40,23 @@ public class LogicalExpressionTests
         result.Should().Be(expected);
     }
 
+    [TestCase("(1 + 1) > 1", true)]
+    [TestCase("3 && 2 = 1", false)]
+    [TestCase("(3 && 2) = 1", true)]
+    [TestCase("1 = 3 && 2", false)]
+    [TestCase("1 = (3 && 2)", true)]
+    public void WhenEvaluateExpressionWithBrackets_WhenShouldReturnExpectedValue(string expression, bool expected)
+    {
+        // assign
+        var logicalExpression = CreateExpression(expression);
+        
+        // act
+        var result = logicalExpression.Evaluate(null);
+        
+        // assert
+        result.Should().Be(expected);
+    }
+
     private LogicalExpression CreateExpression(string input) =>
         new
         (
